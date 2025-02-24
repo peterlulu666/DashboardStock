@@ -1,5 +1,4 @@
-dash  
-dash-bootstrap-components  
-yfinance  
-pandas  
-plotly 
+dash==2.17.0
+plotly==5.22.0
+pandas==2.2.2
+yfinance==0.2.54
