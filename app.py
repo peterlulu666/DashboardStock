@@ -6,7 +6,8 @@ import yfinance as yf
 import plotly.express as px
 import base64
 import io
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta 
+import os 
 
 # Initialize Dash app
 app = Dash(__name__)
@@ -200,4 +201,5 @@ def update_graph(contents, filename, start_date, end_date, cutoff_date, selected
     return fig, f"Data loaded successfully.{error_msg}"
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=8050)
+    port = int(os.getenv("PORT", 8050))  # Use Render's PORT or default to 8050 locally
+    app.run_server(host="0.0.0.0", port=port, debug=True)
