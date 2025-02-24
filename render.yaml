@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: dashboard-stock
+    env: python
+    region: oregon  # Adjust to your preferred region (e.g., oregon, ohio, frankfurt, singapore)
+    plan: free      # Use 'starter' for 1GB RAM ($7/month) if needed
+    branch: main    # Your Git branch
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    autoDeploy: true  # Redeploy on Git push
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: 1      # Ensures logs stream in real-time
+      - key: PORT
+        value: 8050   # Default port (Render overrides this if needed)
